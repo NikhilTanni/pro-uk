@@ -1,8 +1,8 @@
 import { Component, Injectable } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { Shake } from '@ionic-native/shake';
-import { BackgroundMode } from '@ionic-native/background-mode';
-import { LocalNotifications } from '@ionic-native/local-notifications';
+//import { Shake } from '@ionic-native/shake';
+//import { BackgroundMode } from '@ionic-native/background-mode';
+//import { LocalNotifications } from '@ionic-native/local-notifications';
 import { Storage } from '@ionic/storage';
 // import { AlertController } from 'ionic-angular';
 
@@ -27,9 +27,9 @@ export class HomePage {
   data:any={"name":"","age":"","mynumber":"","e1_name":"","e1_num":"","e2_name":"","e2_num":"","moredet":""};
   constructor(
     public navCtrl: NavController,
-    private shake: Shake,
-    private backgroundMode: BackgroundMode,
-    private localNotifications: LocalNotifications,
+    //private shake: Shake,
+    //private backgroundMode: BackgroundMode,
+    //private localNotifications: LocalNotifications,
     private storage: Storage,
     public http: Http,
     private sms: SMS,
@@ -64,18 +64,18 @@ export class HomePage {
 
 
     let requestData={
-      "SecureID" : "secureTY",
+      "secureID" : "secureTY",
       "location" : "lat,lon",
       "userName" : this.data['name']
     }
 
 
-    var link = 'https://amplivelist.herokuapp.com';
+    var link = 'https://amplivelist.herokuapp.com/temp/';
 
     // this.storage.get('api_url').then((val) => {
     //     link=val;
     //   });
-
+    //alert("Working");
     var myData = JSON.stringify(requestData);
     this.http.post(link, myData)
       .map(res => res.json())
