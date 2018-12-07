@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-navbar color="color3">
+    <ion-title style="text-align: center;">
+      SETTINGS
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="bg">
+    <ion-card class="set_cards">
+        <ion-card-header style="text-align: center" class="colors">
+            <ion-icon name="construct"  >
+            </ion-icon>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-item>
+                <ion-label >
+                    Shake
+                </ion-label>
+                <ion-toggle>
+                </ion-toggle>
+            </ion-item>
+            
+             <ion-item>
+                <ion-range min="-200" max="200" pin="false" [(ngModel)]="contrast" color="primary" style="padding-top: 2%"> 
+                    <ion-icon range-left small name="hand"></ion-icon>
+                    <ion-icon range-right name="hand"></ion-icon>
+                </ion-range>
+                </ion-item>
+        </ion-card-content>
+    </ion-card>
+    
+      <ion-card class="set_cards">
+        <ion-card-header style="text-align: center" class="colors">
+            <ion-icon name="alarm"  >
+            </ion-icon>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-item style="display:flex">
+                <ion-label >
+                    Alarm Garduian 1
+                </ion-label>
+                <ion-toggle>
+                </ion-toggle>
+            </ion-item>
+            
+             <ion-item>
+                <ion-label >
+                    Alarm Garduian 2
+                </ion-label>
+                <ion-toggle>
+                </ion-toggle>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+    
+    <ion-card class="set_cards" id="but1">
+        <ion-card-header style="text-align: center" class="colors">
+            <ion-icon name="briefcase">
+            </ion-icon>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-item>
+                <ion-label style="font-style: bold;text-align: center">
+                Store data and settings anytime
+                </ion-label >
+                <ion-toggle>
+                </ion-toggle>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+  
+    
+
+</ion-content>

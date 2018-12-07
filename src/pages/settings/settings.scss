@@ -1,0 +1,59 @@
+page-settings {
+    .header-md::after
+    {
+        box-shadow: 0 0px 0px 0px;
+        border-bottom-color: transparent;
+        border-top-color:#f1f1f1;
+        border-right-color:transparent;
+        border-left-color: transparent;
+        border-style: solid;
+        background-image: none;
+        border-width: thick,
+    }
+    .colors
+    {
+        color:#D8D8D8;
+        font-size: 2.5rem;
+             border-bottom-color: #f1f1f1;
+        border-top-color:transparent;
+        border-right-color:transparent;
+        border-left-color: transparent;
+        border-style: solid;
+        background-image: none;
+        border-width: thick;
+        padding-bottom: 2%;
+    }
+    .set_cards
+    {
+        border-radius: 10px;
+        box-shadow: 0 5px 15px -5px #00000070;
+    }
+    .bg
+    {
+        background-image: linear-gradient(to bottom ,white,white,#f1f1f1,white)
+    }
+    .btn
+    {
+        color:#D8D8D8;
+    }
+     /*.but1
+    {
+        display:inline-block;
+        background:#f1f1f1;
+        height: 120%;
+        border-radius: 30%;
+        box-shadow: 0 5px 15px -5px #00000070;
+       // color:#3498db;
+        overflow:hidden;
+        position:relative;
+    }*/
+    .but1:active 
+    {
+        transform:scale(.95);
+        color:#f1f1f1;
+       // animation:aaa 1s 1;
+       // top:-10%;
+        //left:-10%;
+    }
+
+}

@@ -1,0 +1,215 @@
+page-alert {
+
+   .header-md::after
+    {
+        width: 0%
+    }
+    .body
+    {
+        background-color: azure;
+    }
+    .scroll-content
+    {
+        margin-top:0%;
+        
+    }
+ #alert_but
+    {
+        margin-top: 0px;
+        border-radius: 0px;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        text-align: center;
+        background-color:	#FD5E49;
+        box-shadow: 0 5px 15px -5px #00000070;
+        
+     /*    border-left-style: groove;
+        border-right-style: groove;
+        border-left-color: azure;
+        border-right-color: azure;  */
+    }
+    #alert_but:hover
+    {
+       // transform:scale(.95);
+        color:#f1f1f1;
+        animation:aaa 1s 1;
+        top:-10%;
+        left:-10%;
+    }
+ .but
+    {max-height: 150%;
+        height: 150%;
+        padding: 20%;
+        -webkit-transition-duration: 0.4s; /* Safari */
+        transition-duration: .5s;
+        transition-timing-function: ease-in-out;
+        display: block;
+    }
+ .but:active 
+    {
+        
+        transform: scale3d(.9,.9,.8);
+        
+        opacity: 0.9;
+    }
+ .but1
+    {
+        display:inline-block;
+        background:#f1f1f1;
+        height: 120%;
+        border-radius: 30%;
+        box-shadow: 0 5px 15px -5px #00000070;
+       // color:#3498db;
+        overflow:hidden;
+        position:relative;
+    }
+ #alert_but:before 
+    {
+        content:"";
+        position:absolute;
+        width:120%;
+        height:120%;
+        background:#FD5E49;
+        transform:rotate(45deg);
+        left:-110%;
+        top:90%; 
+        opacity: .5;
+        overflow: hidden;
+    }
+ .but1:active 
+    {
+        transform:scale(.95);
+        color:#f1f1f1;
+       // animation:aaa 1s 1;
+       // top:-10%;
+        //left:-10%;
+    }
+ @keyframes aaa
+    {
+        0%
+        {left:-110%;
+        top:90%;     
+        }
+        50%
+        {left:10%;
+         top:-30%;    
+        }
+        100%
+        {
+        top:90%;
+        left:-110%;
+        }
+    }
+
+ #mar
+    {
+        margin-top: 0%;
+        padding-top: 0%;
+    }
+ .alternate
+    {
+        text-align: center;
+    
+    }
+ .h5
+    {
+        text-align: center;
+        color: aliceblue;
+    }
+ .size_but_alter
+    {
+       line-height:90px;
+       font-size:26px;
+        transition:  0.2s linear;
+        //color: aliceblue;
+    }
+ #mar_alternate
+    {
+      //  margin-left: 0%;
+    //    margin-right: 0%;
+       // width: 100%;
+        border-radius: 10px;
+      //  background-color: aquamarine;
+        box-shadow:0%;
+        //border-bottom-color:antiquewhite;
+       /* border-left-style:inset;
+        border-right-style: inset;
+        border-top-style:inset;
+        border-left-color:aqua;
+        border-right-color: aqua;
+        border-top-color: aqua;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        border-spacing: 20%;*/
+    }
+ #sub_content
+    {
+        background-color:#BDBDBD;
+        margin: 0%;
+        padding: 0%;
+        padding-top: 5%;
+        border-radius: 15px;
+        box-shadow:20px;    
+    }
+ #head
+    {
+        margin-bottom: 0%;
+       // padding-bottom: 0%;
+        color: snow;
+        background-image : linear-gradient(to right, #03A9F4,whitesmoke );
+        font-style:bold;
+    }
+.arrow
+{
+  cursor: pointer;
+  position: relative;
+  bottom: -2rem;
+  left: 50%;
+  margin-left:-20px;
+  width: 40px;
+  height: 40px;
+  margin-top: 2%;
+  /**
+   * Dark Arrow Down
+   */
+  background-image: url("../../assets/imgs/down-arrow.svg")
+ // background-size: contain;
+}
+
+.bounce {
+  animation: bounce 2s infinite;
+    }
+ @keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+  }
+#cards
+    {
+        border-radius: 10px;
+    }
+.fa
+    {
+     //float: left; 
+        //margin-right:2%;
+        text-align: center;
+
+    }
+    .fa-circle 
+    {
+        color:#318F62;
+    }
+
+ .ion-toggle
+    {
+        float:right;
+    }
+ 
+
+}
