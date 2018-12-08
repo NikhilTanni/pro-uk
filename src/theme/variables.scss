@@ -43,11 +43,13 @@ $colors: (
     color2: #ff1744,
     color3:white,
     localization:#318F62,
+    transparen:transparent,
     localization_card:	#D8D8D8,
     group:#B0E3F8,
     group_card:#E3E3E3,
     wear:#503DCE,
     wear_card:#EBEBEB,
+    profile: cyan,
 );
 
 
@@ -96,5 +98,11 @@ $colors: (
 @import "roboto";
 @import "noto-sans";
 //@import "bahnschrift";
+
+@font-face {
+font-family: Ormont_Light;
+src: url(../assets/fonts/bahnschrift.ttf) format("ttf");
+font-weight: 200
+}
 
 $font-family-md-base: "bahnschrift";

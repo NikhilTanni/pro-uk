@@ -1,5 +1,11 @@
 page-alert {
+    
+    .bg
+    {
+       // background-image: linear-gradient(to bottom ,white,white,#D8D8D8,white)
+         background-image: linear-gradient(to bottom right ,white,white,#D8D8D8)
 
+    }
    .header-md::after
     {
         width: 0%
@@ -30,11 +36,11 @@ page-alert {
     }
     #alert_but:hover
     {
-       // transform:scale(.95);
+     //  transform:scale(.95);
         color:#f1f1f1;
-        animation:aaa 1s 1;
-        top:-10%;
-        left:-10%;
+       // animation:aaa 1s 1;
+        //top:-10%;
+        //left:-10%;
     }
  .but
     {max-height: 150%;

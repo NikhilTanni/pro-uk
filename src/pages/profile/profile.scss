@@ -1,0 +1,105 @@
+page-profile{
+     .header-md::after
+    {
+        width: 0%
+    }
+       .bg
+    {
+       // background-image: linear-gradient(to bottom ,white,white,#D8D8D8,white)
+         background-image: linear-gradient(to bottom right ,white,white,white,#D8D8D8)
+
+    }
+     .scroll-content
+    {
+        margin-top:0%;
+        
+    }
+    #alert_but
+    {
+        margin-top: 0px;
+        border-radius: 0px;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        text-align: center;
+        background-color:	cyan;
+        box-shadow: 0 5px 15px -5px #00000070;
+        
+     /*    border-left-style: groove;
+        border-right-style: groove;
+        border-left-color: azure;
+        border-right-color: azure;  */
+    }
+     #mar
+    {
+        margin-top: 0%;
+        padding-top: 0%;
+        padding-bottom: 0%;
+        margin-bottom:0%
+    }
+    .username
+    {
+        //padding:0%;
+        width:50%;
+            height:fit-content;
+        text-align:center;
+        margin: 0%;
+        position:relative;
+        z-index: 1;
+        top:-30px;
+       // left:35%;
+        border-radius: 10px;;
+                box-shadow: 0 5px 15px -5px #00000070;
+            margin-left: 5%;
+
+    }
+    .cards
+    {
+        border-radius:20px;
+     box-shadow: 0 5px 15px -5px #00000070;
+
+        
+    }
+     #alert_but:before 
+    {
+        content:"";
+        position:absolute;
+        width:120%;
+        height:120%;
+        background:cyan;
+        transform:rotate(45deg);
+        left:-110%;
+        top:90%; 
+        opacity: .5;
+        overflow: hidden;
+    }
+    .fab_btn:active
+    {
+        
+        transform: rotate(360deg);
+        
+        animation:aaa 1s 1;
+    }
+    .fab_btn
+    {
+    transition-duration: .9s;
+    }
+    @keyframes aaa
+    {
+        0%
+        {transform: rotate(0deg);
+            transform: scale(1.2);
+        }
+        50%
+        {transform:rotate(90deg);
+           // transform: scale(.7);
+        }
+        
+        100%
+        {
+            transform: rotate(360deg);
+            transform: scale(1);
+        }
+    }
+    
+
+}

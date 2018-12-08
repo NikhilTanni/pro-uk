@@ -1,0 +1,40 @@
+page-login {
+    .bg
+    {
+        background-image: linear-gradient(to bottom right,#FD5E49,cyan)
+    }
+        .header-md::after
+    {
+        width:0%
+    }
+    .slide_cards
+    {
+        border-radius: 30px;
+        height:100%;
+        box-shadow:0 5px 15px -5px #00000070;
+        margin-top: 0%;
+        text-align: center;
+
+    }
+    .inputs
+    {
+        border-radius: 10px;
+        border-bottom-image: #D8D8D8;
+        border-top-color:transparent;
+        border-left-color:transparent;
+        border-right-color:transparent;
+        border-style:outset;
+        border-width: medium;
+        text-align: center
+    }
+    .text-input
+    {
+        text-align: center
+    }
+    .sub_btn
+    {
+        margin-top: 5%;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px -5px #00000070;
+    }
+}

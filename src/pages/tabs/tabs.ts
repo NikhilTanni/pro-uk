@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { SettingsPage } from '../settings/settings';
-import { ContactPage } from '../contact/contact';
+import { ProfilePage } from '../profile/profile';
 import { AlertPage } from '../alert/alert';
 
 @Component({
@@ -10,8 +10,7 @@ import { AlertPage } from '../alert/alert';
 export class TabsPage {
 
   tab1Root = AlertPage;
-  tab2Root = SettingsPage;
-  tab3Root = ContactPage;
+  tab2Root = ProfilePage;
 
   constructor() {
 
