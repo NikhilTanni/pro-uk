@@ -14,12 +14,12 @@
 
 
 <ion-content  class="bg">
-    
-    
+
+
     <ion-slides pager color="primary">
 
     <!---register-->
-        
+
     <ion-slide>
         <ion-card class="slide_cards">
             <button ion-button large icon-only clear style="float: right;z-index: 1;position: relative" (click)="next()" >
@@ -28,23 +28,23 @@
             <ion-card-header style="text-align: left;font-size: 3rem;" color="primary">
                 Register
             </ion-card-header>
-            
+
             <ion-card-content >
-                <ion-input type="text" placeholder="Username" class="inputs" color="primary"></ion-input>
-                 <ion-input type="email" placeholder="Email Id" class="inputs" ></ion-input>
-                <ion-input type="password" placeholder="Password" class="inputs" ></ion-input>
-                <button ion-button type="submit" class="sub_btn" (click)="next()" block >
+                <ion-input type="number" placeholder="Phone number" class="inputs" color="primary" [(ngModel)]="user.phone"></ion-input>
+                 <ion-input type="email" placeholder="Email Id" class="inputs" [(ngModel)]="user.email" ></ion-input>
+                <ion-input type="password" placeholder="Password" class="inputs" [(ngModel)]="user.password"></ion-input>
+                <button ion-button type="submit" class="sub_btn" (click)="login()" block >
                     PROCEED
                 </button>
                 <button ion-button large clear icon-only><ion-icon name="logo-google" style="float: left" color="primary"></ion-icon></button>
                 <button ion-button large clear icon-only><ion-icon name="logo-facebook" style="float: left"></ion-icon></button>
-                
+
                 <ion-label wrap style="font-size: 1.5rem">By clicking on proceed you agree to our</ion-label>
                 <ion-label style="font-size: 1rem">
                     <a href="https://livsma.com">
                         terms and conditions
-                    </a> 
-                    and 
+                    </a>
+                    and
                     <a href="https://livsma.com">
                         privacy policy
                     </a>
@@ -52,7 +52,7 @@
             </ion-card-content>
         </ion-card>
     </ion-slide>
-        
+
     <!---Details-->
 
       <ion-slide>
@@ -67,15 +67,15 @@
             <ion-card-header style="text-align: center;font-size: 2rem;" color="primary">
                 Enter details
             </ion-card-header>
-            
+
             <!-- optional -->
             <ion-card-content >
-                <ion-input type="text" placeholder="Full Name*" class="inputs" color="primary"></ion-input>
-                <ion-input type="Number" placeholder="Age*" class="inputs" color="primary"></ion-input>
-                <ion-input type="Number" placeholder="Mobile Number*" class="inputs" color="primary"></ion-input>
+                <ion-input type="text" placeholder="Full Name*" class="inputs" color="primary" [(ngModel)]="name"></ion-input>
+                <ion-input type="Number" placeholder="Age*" class="inputs" color="primary" [(ngModel)]="age"></ion-input>
+                <ion-input type="Number" placeholder="Mobile Number*" class="inputs" color="primary" [(ngModel)]="mynumber"></ion-input>
                 <ion-list radio-group>
                     <div style="display: flex">
-                        <ion-item> 
+                        <ion-item>
                             <ion-label style="font-size: 1.5rem">male</ion-label>
                             <ion-radio></ion-radio>
                         </ion-item>
@@ -85,15 +85,15 @@
                         </ion-item>
                     </div>
                 </ion-list>
-                
+
                 <!--medical details-->
                 <ion-label wrap style="font-size: 2rem;text-align: center" color="primary" >Medical details</ion-label>
                 <!--allergies-->
-                
+
                 <ion-label style="font-size:1.5rem;text-align: center;margin: 0%">Allergies</ion-label>
                 <ion-list radio-group>
                     <div style="display: flex">
-                        <ion-item> 
+                        <ion-item>
                             <ion-label style="font-size: 1.5rem">yes</ion-label>
                             <ion-radio></ion-radio>
                         </ion-item>
@@ -103,13 +103,13 @@
                         </ion-item>
                     </div>
                 </ion-list>
-                
+
                 <!--diagnosis-->
-                
+
                 <ion-label style="font-size:1.5rem;text-align: center;margin: 0%">Diagnosis</ion-label>
                 <ion-list radio-group>
                     <div style="display: flex">
-                        <ion-item> 
+                        <ion-item>
                             <ion-label style="font-size: 1.5rem">yes</ion-label>
                             <ion-radio></ion-radio>
                         </ion-item>
@@ -119,17 +119,17 @@
                         </ion-item>
                     </div>
                 </ion-list>
-                
+
                 <!-- disable this if no-->
                 <ion-input type="text" placeholder="If yes,do list them" class="inputs" color="primary"></ion-input>
-                
-                
+
+
             </ion-card-content>
         </ion-card>
     </ion-slide>
-        
+
     <!--Gaurdian Details, doctor details and awareness-->
-        
+
     <ion-slide>
         <ion-card class="slide_cards">
             <button ion-button large icon-only clear style="float: left;z-index: 1;position: relative" (click)="prev()" >
@@ -142,32 +142,32 @@
             <ion-card-header style="text-align: center;font-size: 2rem;" color="primary">
                 Gaurdian detials
             </ion-card-header>
-            
+
             <ion-card-content>
                 <!--fetch from contacts-->
                 <button ion-button large class="sub_btn" >Use contacts <ion-icon name="contacts"></ion-icon></button>
                 <ion-label wrap style="font-size: 1.3rem;text-align: center" text-wrap>
                     Add the people whom you feel are closer to you. Add at least two contacts*
                 </ion-label>
-                
+
                 <!--doctor details-->
                 <ion-label wrap style="font-size: 2rem;text-align: center" color="primary" >Doctor details</ion-label>
-                <ion-input type="text" placeholder="Doctor name" class="inputs" color="primary"></ion-input>
-                <ion-input type="Number" placeholder="mobile number" class="inputs" color="primary"></ion-input>
+                <ion-input type="text" placeholder="Doctor name" class="inputs" color="primary" [(ngModel)]="e1_name"></ion-input>
+                <ion-input type="Number" placeholder="mobile number" class="inputs" color="primary" [(ngModel)]="e1_num"></ion-input>
                 <ion-input type="email" placeholder="Doctor email" class="inputs" color="primary"></ion-input>
-              
+
                 <!--family doctor awareness-->
                 <ion-label wrap style="font-size: 1.3rem;text-align: center" text-wrap>
                     Any unknown symptoms or uneasiness should be reported to doctor immediatley. It should be a practise to have an induvidual doctor to consult which leads to better results in doctor-patient relationship.
                 </ion-label>
 
-                
+
             </ion-card-content>
         </ion-card>
     </ion-slide>
-    
+
     <!--awareness of shake-->
-    
+
     <ion-slide>
          <ion-card class="slide_cards">
             <button ion-button large icon-only clear style="float: left;z-index: 1;position: relative" (click)="prev()" >
@@ -180,10 +180,10 @@
             <ion-card-header style="text-align: center;font-size: 2rem;" color="primary">
                 shake the phone
             </ion-card-header>
-             
+
              <ion-card-content>
                  <img src="../../assets/imgs/phone_shake.png" style="width:80%;height:80%;display:inline;">
-                 
+
                  <ion-label wrap style="font-size: 1.3rem;text-align: center" text-wrap>
                     Shake the phone to request alert.Make sure your app is not closed.
                  </ion-label>
@@ -195,9 +195,9 @@
                     <ion-toggle>
                     </ion-toggle>
                 </ion-item>
-            
+
                 <ion-item>
-                    <ion-range min="-200" max="200" pin="false" [(ngModel)]="contrast" color="primary" style="padding-top: 2%"> 
+                    <ion-range min="-200" max="200" pin="false" [(ngModel)]="contrast" color="primary" style="padding-top: 2%">
                         <ion-icon range-left small name="hand"></ion-icon>
                         <ion-icon range-right name="hand"></ion-icon>
                     </ion-range>

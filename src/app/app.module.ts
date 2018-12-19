@@ -12,6 +12,22 @@ import { LoginPage } from '../pages/login/login';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { CallNumber } from '@ionic-native/call-number';
+import { IonicStorageModule } from '@ionic/storage';
+import { NetworkInterface } from '@ionic-native/network-interface';
+
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth'
+
+var config = {
+    apiKey: "AIzaSyASZwRs3Dp2OEHauxRVMEAbA24YV69NX8A",
+    authDomain: "pro1-2260c.firebaseapp.com",
+    databaseURL: "https://pro1-2260c.firebaseio.com",
+    projectId: "pro1-2260c",
+    storageBucket: "pro1-2260c.appspot.com",
+    messagingSenderId: "1035475716194"
+  };
 
 @NgModule({
   declarations: [
@@ -24,7 +40,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireDatabaseModule,
+    IonicStorageModule.forRoot(),
+    AngularFireModule.initializeApp(config),
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -38,6 +58,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
+    CallNumber,
+    NetworkInterface,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
