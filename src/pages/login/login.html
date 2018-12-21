@@ -30,6 +30,7 @@
             </ion-card-header>
 
             <ion-card-content >
+              {{error}}
                 <ion-input type="number" placeholder="Phone number" class="inputs" color="primary" [(ngModel)]="user.phone"></ion-input>
                  <ion-input type="email" placeholder="Email Id" class="inputs" [(ngModel)]="user.email" ></ion-input>
                 <ion-input type="password" placeholder="Password" class="inputs" [(ngModel)]="user.password"></ion-input>
@@ -77,11 +78,11 @@
                     <div style="display: flex">
                         <ion-item>
                             <ion-label style="font-size: 1.5rem">male</ion-label>
-                            <ion-radio></ion-radio>
+                            <ion-radio (click)="setvalue(1,1)"></ion-radio>
                         </ion-item>
                         <ion-item>
                             <ion-label style="font-size: 1.5rem">Female</ion-label>
-                            <ion-radio></ion-radio>
+                            <ion-radio (click)="setvalue(1,2)"></ion-radio>
                         </ion-item>
                     </div>
                 </ion-list>
@@ -95,11 +96,11 @@
                     <div style="display: flex">
                         <ion-item>
                             <ion-label style="font-size: 1.5rem">yes</ion-label>
-                            <ion-radio></ion-radio>
+                            <ion-radio (click)="setvalue(2,1)"></ion-radio>
                         </ion-item>
                         <ion-item>
                             <ion-label style="font-size: 1.5rem">No</ion-label>
-                            <ion-radio></ion-radio>
+                            <ion-radio (click)="setvalue(2,2)"></ion-radio>
                         </ion-item>
                     </div>
                 </ion-list>
@@ -111,11 +112,11 @@
                     <div style="display: flex">
                         <ion-item>
                             <ion-label style="font-size: 1.5rem">yes</ion-label>
-                            <ion-radio></ion-radio>
+                            <ion-radio (click)="setvalue(3,1)"></ion-radio>
                         </ion-item>
                         <ion-item>
                             <ion-label style="font-size: 1.5rem">No</ion-label>
-                            <ion-radio></ion-radio>
+                            <ion-radio (click)="setvalue(3,2)"></ion-radio>
                         </ion-item>
                     </div>
                 </ion-list>
@@ -197,7 +198,7 @@
                 </ion-item>
 
                 <ion-item>
-                    <ion-range min="-200" max="200" pin="false" [(ngModel)]="contrast" color="primary" style="padding-top: 2%">
+                    <ion-range min="0" max="200" pin="false" [(ngModel)]="sensitivity" (ionChange)="setvalue(4,0)" color="primary" style="padding-top: 2%">
                         <ion-icon range-left small name="hand"></ion-icon>
                         <ion-icon range-right name="hand"></ion-icon>
                     </ion-range>

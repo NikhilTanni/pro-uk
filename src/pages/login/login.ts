@@ -31,6 +31,9 @@ export class LoginPage {
   moredet="";
   error="";
   uid:any="";
+  gender:any="";
+  sensitivity:number;
+  all_dia=["Allergy","Diagnosis"];
   public user:User = new User();
    @ViewChild(Slides) slides: Slides;
    pushPage: any;
@@ -64,6 +67,54 @@ export class LoginPage {
     });
   }
 
+  save_all_details(m){
+    if(m==1){
+      this.storage.set("setting_name",this.name);
+      this.storage.set("setting_age",this.age);
+      this.storage.set("setting_e1_name",this.e1_name);
+      this.storage.set("setting_e1_num",this.e1_num);
+      this.storage.set("setting_uid",this.uid);
+      this.storage.set("setting_gender",this.gender);
+      this.storage.set("setting_all_dia",this.all_dia);
+    }
+  }
+
+  setvalue(m,v){
+    if(m==1){
+      if(v==1){
+        this.gender="Male";
+      }
+      else if(v==2){
+        this.gender="Female";
+      }
+      else{
+        this.gender="N/A";
+      }
+    }
+    else if(m==2){
+      if(v==1){
+        this.all_dia[0]="Allergy";
+      }
+      else{
+        this.all_dia[0]="No Allergy";
+      }
+    }
+    else if(m==3){
+      if(v==1){
+        this.all_dia[0]="Diagnosis";
+      }
+      else{
+        this.all_dia[0]="No Diagnosis";
+      }
+    }
+    else if(m==4){
+      this.storage.set("setting_shake_sensitivity",this.sensitivity);
+    }
+    console.log(this.gender);
+    console.log(this.all_dia);
+    console.log(this.sensitivity);
+  }
+
   get_saved_input_details(){
 
     this.storage.get('setting_name').then((val) => {
@@ -93,6 +144,7 @@ export class LoginPage {
   }
 
   validate_input(){
+    this.mynumber=this.user.phone;
     if(this.name==""){
       this.error="Name cannot be empty!!";
     }
@@ -108,12 +160,6 @@ export class LoginPage {
     else if(this.e1_num<999999999){
       this.error="Invalid number - Emergency person 1";
     }
-    else if(this.e2_name==""){
-      this.error="Emergence person 2 name cannot be empty!!";
-    }
-    else if(this.e2_num<999999999){
-      this.error="Invalid number - Emergency person 2";
-    }
     else{
       //success
       //save to storage
@@ -122,17 +168,12 @@ export class LoginPage {
       this.storage.set("setting_mynumber",this.mynumber);
       this.storage.set("setting_e1_name",this.e1_name);
       this.storage.set("setting_e1_num",this.e1_num);
-      this.storage.set("setting_e2_name",this.e2_name);
-      this.storage.set("setting_e2_num",this.e2_num);
       this.storage.set("setting_moredet",this.moredet);
       this.storage.set("setting_user_det_key",1);
-      this.storage.set("setting_api_url","https://amplivelist.herokuapp.com/temp/");
       this.storage.set("setting_shake_sensitivity",20);
       this.storage.set("setting_sms_s1_send","true");
-      this.storage.set("setting_sms_s2_send","true");
       this.storage.set("setting_user_det_key",1);
       this.storage.set("setting_setting_data_fetch",1);
-      this.navCtrl.pop()
     }
   }
 
@@ -161,6 +202,7 @@ export class LoginPage {
       }
       else{
         console.error(err);
+        this.error="Failed to Auth! check all credentials properly! if problem still persist, Please contact service center!";
       }
     }
   }
@@ -178,6 +220,7 @@ export class LoginPage {
 
     } catch (err) {
       console.error(err);
+      this.error="Failed to Register! Please contact service center!";
     }
   }
 
@@ -190,6 +233,9 @@ export class LoginPage {
     })
   }
 
+  init_sett_done(){
+    this.save_all_details(1);
+  }
   init_database(){
     var ip_ad={"car_ip":":","wifi_ip":":"};
     this.networkInterface.getWiFiIPAddress()

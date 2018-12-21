@@ -15,6 +15,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { CallNumber } from '@ionic-native/call-number';
 import { IonicStorageModule } from '@ionic/storage';
 import { NetworkInterface } from '@ionic-native/network-interface';
+import { Shake } from '@ionic-native/shake';
+import { SMS } from '@ionic-native/sms';
+import { LocalNotifications } from '@ionic-native/local-notifications';
+import { BackgroundMode } from '@ionic-native/background-mode';
 
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
@@ -60,6 +64,10 @@ var config = {
     SplashScreen,
     CallNumber,
     NetworkInterface,
+    Shake,
+    SMS,
+    LocalNotifications,
+    BackgroundMode,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
