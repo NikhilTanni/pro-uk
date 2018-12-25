@@ -16,23 +16,23 @@
 <ion-content  class="bg">
 
 
-    <ion-slides pager color="primary">
+    <ion-slides pager color="primary" style="display:block;position:fixed">
 
     <!---register-->
 
     <ion-slide>
         <ion-card class="slide_cards">
-            <button ion-button large icon-only clear style="float: right;z-index: 1;position: relative" (click)="next()" >
+            <!-- <button ion-button large icon-only clear style="float: right;z-index: 1;position: relative" (click)="next()" >
                     <ion-icon name="arrow-round-forward" color="localization_card"></ion-icon>
-            </button>
+            </button> -->
             <ion-card-header style="text-align: left;font-size: 3rem;" color="primary">
                 Register
             </ion-card-header>
 
             <ion-card-content >
               {{error}}
-                <ion-input type="number" placeholder="Phone number" class="inputs" color="primary" [(ngModel)]="user.phone"></ion-input>
-                 <ion-input type="email" placeholder="Email Id" class="inputs" [(ngModel)]="user.email" ></ion-input>
+              <br/>
+                <ion-input type="email" placeholder="Email Id" class="inputs" [(ngModel)]="user.email" ></ion-input>
                 <ion-input type="password" placeholder="Password" class="inputs" [(ngModel)]="user.password"></ion-input>
                 <button ion-button type="submit" class="sub_btn" (click)="login()" block >
                     PROCEED
@@ -58,10 +58,10 @@
 
       <ion-slide>
         <ion-card class="slide_cards">
-            <button ion-button large icon-only clear style="float: left;z-index: 1;position: relative" (click)="prev()" >
+            <!-- <button ion-button large icon-only clear style="float: left;z-index: 1;position: relative" (click)="prev()" >
                     <ion-icon name="arrow-round-back" color="localization_card"></ion-icon>
             </button>
-
+            -->
             <button ion-button large icon-only clear style="float: right;z-index: 1;position: relative" (click)="next()" >
                     <ion-icon name="arrow-round-forward" color="localization_card"></ion-icon>
             </button>
@@ -125,6 +125,7 @@
                 <ion-input type="text" placeholder="If yes,do list them" class="inputs" color="primary"></ion-input>
 
 
+
             </ion-card-content>
         </ion-card>
     </ion-slide>
@@ -171,13 +172,13 @@
 
     <ion-slide>
          <ion-card class="slide_cards">
-            <button ion-button large icon-only clear style="float: left;z-index: 1;position: relative" (click)="prev()" >
+            <!-- <button ion-button large icon-only clear style="float: left;z-index: 1;position: relative" (click)="prev()" >
                     <ion-icon name="arrow-round-back" color="localization_card"></ion-icon>
-            </button>
+            </button> -->
 
-            <button ion-button large icon-only clear style="float: right;z-index: 1;position: relative" [navPush]="pushPage" >
+            <!-- <button ion-button large icon-only clear style="float: right;z-index: 1;position: relative" [navPush]="pushPage" >
                     <ion-icon name="arrow-round-forward" color="localization_card"></ion-icon>
-            </button>
+            </button> -->
             <ion-card-header style="text-align: center;font-size: 2rem;" color="primary">
                 shake the phone
             </ion-card-header>
@@ -193,7 +194,7 @@
                     <ion-label >
                         Shake
                     </ion-label>
-                    <ion-toggle>
+                    <ion-toggle [(ngModel)]="shake_enable" (click)="setvalue(5)">
                     </ion-toggle>
                 </ion-item>
 
@@ -203,6 +204,7 @@
                         <ion-icon range-right name="hand"></ion-icon>
                     </ion-range>
                 </ion-item>
+                <button ion-button (click)="init_sett_done()">Done!</button>
              </ion-card-content>
         </ion-card>
     </ion-slide>

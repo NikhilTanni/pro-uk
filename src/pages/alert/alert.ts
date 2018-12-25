@@ -15,6 +15,7 @@ import { SMS } from '@ionic-native/sms';
 export class AlertPage {
 
   lock_click:any=[0,0,0];
+  sos_click:any=[0];
   emer_call:any=["9972284495","9035489865","9164175075"];
   sensitivity:number=20;
   mydata:any=["myname","mynum","gnme","gnum"];
@@ -46,6 +47,9 @@ export class AlertPage {
     this.storage.get('setting_e1_num').then((val) => {
       this.mydata[3]=val;
     });
+    this.storage.get('setting_shake_sensitivity').then((val) => {
+      this.sensitivity=val;
+    });
   }
 
   sos_press(){
@@ -59,6 +63,17 @@ export class AlertPage {
       ]
     });
     this.sendsms();
+    if(this.sos_click[0]==0){
+      this.sos_click[0]=1;
+    }
+    else if(this.sos_click[0]==1){
+      this.sos_click=2;
+    }
+    else{
+      this.sos_click[0]=-1;
+      this.callnumber(this.mydata[3].toString());
+      this.sos_click[0]=0;
+    }
   }
 
 
@@ -82,7 +97,7 @@ export class AlertPage {
   }
 
   sendsms(){
-      this.sms.send(this.mydata[3], 'EMERGENCY ALERT! \n '+this.mydata[2]+' has requested for alert! \n PLEASE HELP!!');
+      this.sms.send(this.mydata[3].toString(), 'EMERGENCY ALERT! \n '+this.mydata[2]+' has requested for alert! \n PLEASE HELP!!');
 
   }
 

@@ -35,5 +35,10 @@ export class MyApp {
         this.rootPage=LoginPage;
       }
     });
+    this.storage.get('setting_all_done').then((val) => {
+      if(val!=1){
+        this.rootPage=LoginPage;
+      }
+    });
   }
 }

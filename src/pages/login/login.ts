@@ -10,9 +10,9 @@ import { Storage } from '@ionic/storage';
 import { NetworkInterface } from '@ionic-native/network-interface';
 
  export class User {
-     email: string="";
+     email: string="test@test.com";
      phone: number;
-     password: string="";
+     password: string="test@123";
  }
 
 @IonicPage()
@@ -21,18 +21,19 @@ import { NetworkInterface } from '@ionic-native/network-interface';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  name="";
-  age:number;
-  mynumber:number;
-  e1_name="";
-  e1_num:number;
+  name="test";
+  age:number=50;
+  mynumber:number=9876543210;
+  e1_name="guardian";
+  e1_num:number=9988776655;
   e2_name=""
   e2_num:number;
-  moredet="";
+  moredet="--";
   error="";
   uid:any="";
   gender:any="";
-  sensitivity:number;
+  sensitivity:number=100;
+  shake_enable:any="true";
   all_dia=["Allergy","Diagnosis"];
   public user:User = new User();
    @ViewChild(Slides) slides: Slides;
@@ -50,7 +51,9 @@ export class LoginPage {
 
   }
     next() {
+    this.slides.lockSwipes(false);
     this.slides.slideNext();
+    this.slides.lockSwipes(true);
   }
 
   prev() {
@@ -60,12 +63,14 @@ export class LoginPage {
 
   ionViewDidLoad() {
     // console.log('ionViewDidLoad LoginPage');
+    this.slides.lockSwipes(true);
     this.storage.get('setting_user_det_key').then((val) => {
       if(val=="1"){
         this.get_saved_input_details()
       }
     });
   }
+
 
   save_all_details(m){
     if(m==1){
@@ -76,6 +81,10 @@ export class LoginPage {
       this.storage.set("setting_uid",this.uid);
       this.storage.set("setting_gender",this.gender);
       this.storage.set("setting_all_dia",this.all_dia);
+      this.storage.set("setting_shake_enable",this.shake_enable);
+      this.storage.set("setting_all_done",1);
+      this.next();
+      this.navCtrl.setRoot(TabsPage);
     }
   }
 
@@ -109,6 +118,10 @@ export class LoginPage {
     }
     else if(m==4){
       this.storage.set("setting_shake_sensitivity",this.sensitivity);
+    }
+    else if(m==5){
+      console.log(this.shake_enable);
+      //this.storage.set("setting_shake_enable",this.shake_enable);
     }
     console.log(this.gender);
     console.log(this.all_dia);
