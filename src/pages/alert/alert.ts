@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { NavController, Content } from 'ionic-angular';
 
 import { CallNumber } from '@ionic-native/call-number';
 import { Shake } from '@ionic-native/shake';
@@ -13,6 +13,7 @@ import { SMS } from '@ionic-native/sms';
   templateUrl: 'alert.html'
 })
 export class AlertPage {
+  @ViewChild(Content) content: Content;
 
   lock_click:any=[0,0,0];
   sos_click:any=[0];
@@ -29,8 +30,17 @@ export class AlertPage {
     private sms: SMS
   ) {
     this.init_data()
-    this.shake_init();
+    try{
+      this.shake_init();
+    }
+    catch(exception){
+      console.log(exception);
+    }
     this.backgroundMode.enable();
+  }
+
+  scrollToBottom(){
+    this.content.scrollToBottom();
   }
 
 
