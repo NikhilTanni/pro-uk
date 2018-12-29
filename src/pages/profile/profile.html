@@ -16,12 +16,12 @@
     <ion-row>
         <ion-col col-1 id="mar">
         </ion-col>
-        
+
         <ion-col col-10 id="mar">
             <ion-card id="alert_but">
                 <ion-card-content >
                  <img src="../../assets/imgs/kisspng-computer-icons-user-profile-avatar-profile-5ab9c986b095a6.6561310815221251907233.png" style="border-radius: 100%;">
-                    
+
                 <ion-fab right top style="margin-right: 5%">
                           <button ion-fab clear icon-only color="transparen">
                               <ion-icon name="camera"></ion-icon>
@@ -30,15 +30,15 @@
                 </ion-card-content>
             </ion-card>
         </ion-col>
-        
+
         <ion-col col-1 id="mar">
         </ion-col>
         </ion-row>
     </ion-grid>
-        
+
                   <ion-card class="username" color="secondary">
                 <ion-card-header style="width:100%;height:fit-content;font-size:2rem;padding-top:0;padding-bottom:0;padding-left: 10%;padding-right: 10%">
-                    username
+                    {{name}}
                 </ion-card-header>
             </ion-card>
 
@@ -49,25 +49,17 @@
     <ion-avatar item-start>
       <img src="../../assets/imgs/kisspng-computer-icons-user-profile-avatar-profile-5ab9c986b095a6.6561310815221251907233.png">
     </ion-avatar>
-    <h2>gaurdian 1</h2>
-    <p>9283786556</p>
+    <h2>{{e1_name}}</h2>
+    <p>{{e1_num}}</p>
   </ion-item>
-    
-    <ion-item>
-    <ion-avatar item-start>
-      <img src="../../assets/imgs/kisspng-computer-icons-user-profile-avatar-profile-5ab9c986b095a6.6561310815221251907233.png">
-    </ion-avatar>
-    <h2>gaurdian 2</h2>
-    <p >9283786556</p>
-  </ion-item>
-    
+
         <button ion-button full clear icon-only style="margin:0%;padding:0%" color="localization_card"><ion-icon name="add"></ion-icon></button>
     <!--p style="text-align: center;color:#D8D8D8">Add more</p!-->
 
 </ion-list>
     </ion-card-content>
 </ion-card>
-    
+
 <ion-card class="cards" style="position: relative">
     <ion-card-content>
 <ion-list>
@@ -75,7 +67,7 @@
     <h2>Allergic</h2>
     <p>Dust and greece</p>
   </ion-item>
-    
+
         <ion-item>
     <h2>Disease or prone to</h2>
     <p >heart attack,stroke and diabeties</p>
@@ -90,7 +82,7 @@
 <button ion-button full clear icon-only style="margin:0%;padding:0%" color="primary">Edit info</button>
     </ion-card-content>
     </ion-card>
-    
+
 <ion-card class="cards" style="position: relative">
     <ion-card-content>
 <button ion-button full clear icon-only style="margin:0%;padding:0%" color="primary">Restore your Data</button>

@@ -48,11 +48,11 @@
     "cordova-plugin-statusbar": "^2.4.2",
     "cordova-plugin-whitelist": "^1.3.3",
     "cordova-sms-plugin": "^1.0.0",
-    "cordova-sqlite-storage": "^2.5.2",
+    "cordova-sqlite-storage": "^2.6.0",
     "firebase": "^3.9.*",
     "ionic-angular": "3.9.2",
     "ionicons": "3.0.0",
-    "mx.ferreyra.callnumber": "~0.0.2",
+    "mx.ferreyra.callnumber": "0.0.2",
     "rxjs": "5.5.11",
     "sw-toolbox": "3.6.0",
     "zone.js": "0.8.26"
@@ -79,7 +79,8 @@
       "cordova-plugin-shake": {},
       "cordova-sms-plugin": {},
       "cordova-plugin-local-notification": {},
-      "cordova-plugin-background-mode": {}
+      "cordova-plugin-background-mode": {},
+      "call-number": {}
     },
     "platforms": [
       "android",

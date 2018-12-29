@@ -10,9 +10,9 @@ import { Storage } from '@ionic/storage';
 import { NetworkInterface } from '@ionic-native/network-interface';
 
  export class User {
-     email: string="test@test.com";
+     email: string="";
      phone: number;
-     password: string="test@123";
+     password: string="";
  }
 
 @IonicPage()
@@ -21,14 +21,14 @@ import { NetworkInterface } from '@ionic-native/network-interface';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  name="test";
-  age:number=50;
-  mynumber:number=9876543210;
-  e1_name="guardian";
-  e1_num:number=9988776655;
+  name="";
+  age:number;
+  mynumber:number;
+  e1_name="";
+  e1_num:number;
   e2_name=""
   e2_num:number;
-  moredet="--";
+  moredet="";
   error="";
   uid:any="";
   gender:any="";
@@ -64,6 +64,7 @@ export class LoginPage {
   ionViewDidLoad() {
     // console.log('ionViewDidLoad LoginPage');
     this.slides.lockSwipes(true);
+
     this.storage.get('setting_user_det_key').then((val) => {
       if(val=="1"){
         this.get_saved_input_details()
@@ -83,6 +84,7 @@ export class LoginPage {
       this.storage.set("setting_all_dia",this.all_dia);
       this.storage.set("setting_shake_enable",this.shake_enable);
       this.storage.set("setting_all_done",1);
+      this.init_database();
       this.next();
       this.navCtrl.setRoot(TabsPage);
     }
@@ -198,6 +200,7 @@ export class LoginPage {
       );
       this.fAuth.authState.subscribe(data=>{
         this.uid = data.uid;
+        this.init_firebase_retreave(data.uid);
         this.storage.set("setting_user_id",data.uid);
         this.storage.set("login_user_is_login",1);
         this.storeEmailAndPass();
@@ -207,6 +210,7 @@ export class LoginPage {
         this.storage.set("login_user_is_login",1);
         this.storage.set("setting_user_det_key",1);
         this.storeEmailAndPass();
+
         this.next();
       }
 
@@ -250,7 +254,7 @@ export class LoginPage {
       this.storage.set("setting_user_id",data.uid);
       this.storage.set("login_user_is_login",1);
       this.storeEmailAndPass();
-      this.init_database();
+
     })
   }
 
@@ -300,28 +304,54 @@ export class LoginPage {
     var user_det={
       'name' : 'xyzname',
       'email' : this.user.email,
-      'phone' : this.user.phone,
-      'gender' : 'male/female',
-      'dob' : '40/13/3004'
+      'gender' : this.gender,
+      'dob' : '40-13-3004'
     }
+    console.log(user_det);
     this.afd.list('/userdata/'+this.uid+'/userinfo/').push(user_det);
 
     var app_set={
-      'setting_name':"-not-updated-",
-      'setting_age':"-not-updated-",
-      'setting_mynumber':"-not-updated-",
-      'setting_e1_name':"-not-updated-",
-      'setting_e1_num':"-not-updated-",
+      'setting_name':this.name,
+      'setting_age':this.age,
+      'setting_mynumber':this.mynumber,
+      'setting_e1_name':this.e1_name,
+      'setting_e1_num':this.e1_num,
       'setting_e2_name':"-not-updated-",
       'setting_e2_num':"-not-updated-",
-      'setting_moredet':"-not-updated-",
+      'setting_allergy':this.all_dia[0],
+      'setting_diagon':this.all_dia[1],
+      'setting_moredet':this.moredet,
       'setting_user_det_key':"-not-updated-",
       'setting_api_url':"https://amplivelist.herokuapp.com/temp/",
-      'setting_shake_sensitivity':"20",
+      'setting_shake_sensitivity':this.sensitivity,
       'setting_sms_s1_send':"true",
       'setting_sms_s2_send':"true"
     }
     this.afd.list('/userdata/'+this.uid+'/appdata/setting_backup/').push(app_set);
   }
+
+
+
+  init_firebase_retreave(u_id){
+    this.afd.list('/userdata/'+u_id+"/appdata/setting_backup/")
+      .subscribe(
+        (data) => {
+          console.log(data[0]);
+          this.name=data[0]['setting_name'];
+          this.age=data[0]['setting_age'];
+          this.mynumber=data[0]['setting_mynumber'];
+          this.e1_name=data[0]['setting_e1_name'];
+          this.e1_num=data[0]['setting_e1_num'];
+          this.gender=data[0]['setting_gender'];
+          this.all_dia[0]=data[0]['setting_allergy'];
+          this.all_dia[1]=data[0]['setting_diagon'];
+          this.moredet=data[0]['setting_moredet'];
+          this.sensitivity=data[0]['setting_shake_sensitivity'];
+
+        }
+      )
+    }
+
+
 
 }

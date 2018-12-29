@@ -20,16 +20,16 @@
                 <ion-toggle>
                 </ion-toggle>
             </ion-item>
-            
+
              <ion-item>
-                <ion-range min="-200" max="200" pin="false" [(ngModel)]="contrast" color="primary" style="padding-top: 2%"> 
+                <ion-range min="-200" max="200" pin="false" [(ngModel)]="contrast" color="primary" style="padding-top: 2%">
                     <ion-icon range-left small name="hand"></ion-icon>
                     <ion-icon range-right name="hand"></ion-icon>
                 </ion-range>
                 </ion-item>
         </ion-card-content>
     </ion-card>
-    
+
       <ion-card class="set_cards">
         <ion-card-header style="text-align: center" class="colors">
             <ion-icon name="alarm"  >
@@ -43,7 +43,7 @@
                 <ion-toggle>
                 </ion-toggle>
             </ion-item>
-            
+
              <ion-item>
                 <ion-label >
                     Alarm Garduian 2
@@ -53,7 +53,7 @@
             </ion-item>
         </ion-card-content>
     </ion-card>
-    
+
     <ion-card class="set_cards" id="but1">
         <ion-card-header style="text-align: center" class="colors">
             <ion-icon name="briefcase">
@@ -67,9 +67,12 @@
                 <ion-toggle>
                 </ion-toggle>
             </ion-item>
+            <ion-item>
+              <button ion-button (color)="danger" style="width:100%" (click)="signout_all(0)">SIGN OUT!</button>
+            </ion-item>
         </ion-card-content>
     </ion-card>
-  
-    
+
+
 
 </ion-content>

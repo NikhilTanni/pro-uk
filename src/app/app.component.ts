@@ -12,7 +12,7 @@ import { AlertPage } from '../pages/alert/alert';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = AlertPage;
+  rootPage:any = TabsPage;
 
   constructor(
     platform: Platform,

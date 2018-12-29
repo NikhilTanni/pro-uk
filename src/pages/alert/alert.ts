@@ -43,7 +43,7 @@ export class AlertPage {
     catch(exception){
       console.log(exception);
     }
-    this.init_firebase_retreave();
+    // this.init_firebase_retreave();
     this.backgroundMode.enable();
   }
 
@@ -81,21 +81,7 @@ export class AlertPage {
     });
   }
 
-  init_firebase_retreave(){
-    this.afauth.auth.signInWithEmailAndPassword(this.email, this.password)
-    .then((auth) => {
-      console.log("Sign in success");
-      this.afd.list('/userdata/'+this.mydata[4]+"/appdata/setting_backup/")
-      .subscribe(
-        (data) => {
-          console.log(data[0]);
-        }
-      )
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-  }
+
 
   sos_press(){
 
@@ -112,10 +98,6 @@ export class AlertPage {
       this.sos_click[0]=1;
     }
     else if(this.sos_click[0]==1){
-      this.sos_click=2;
-    }
-    else{
-      this.sos_click[0]=-1;
       this.callnumber(this.mydata[3].toString());
       this.sos_click[0]=0;
     }
