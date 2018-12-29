@@ -200,11 +200,13 @@ export class LoginPage {
         this.uid = data.uid;
         this.storage.set("setting_user_id",data.uid);
         this.storage.set("login_user_is_login",1);
+        this.storeEmailAndPass();
       })
       if (r) {
         console.log("Successfully logged in!");
         this.storage.set("login_user_is_login",1);
         this.storage.set("setting_user_det_key",1);
+        this.storeEmailAndPass();
         this.next();
       }
 
@@ -218,6 +220,11 @@ export class LoginPage {
         this.error="Failed to Auth! check all credentials properly! if problem still persist, Please contact service center!";
       }
     }
+  }
+
+  storeEmailAndPass(){
+    this.storage.set("email", this.user.email);
+    this.storage.set("password", this.user.password);
   }
 
   async register() {
@@ -242,6 +249,7 @@ export class LoginPage {
       this.uid = data.uid;
       this.storage.set("setting_user_id",data.uid);
       this.storage.set("login_user_is_login",1);
+      this.storeEmailAndPass();
       this.init_database();
     })
   }

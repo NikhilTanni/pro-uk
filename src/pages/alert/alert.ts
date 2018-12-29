@@ -8,6 +8,9 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
 import { BackgroundMode } from '@ionic-native/background-mode';
 import { SMS } from '@ionic-native/sms';
 
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+
 @Component({
   selector: 'page-alert',
   templateUrl: 'alert.html'
@@ -19,7 +22,9 @@ export class AlertPage {
   sos_click:any=[0];
   emer_call:any=["9972284495","9035489865","9164175075"];
   sensitivity:number=20;
-  mydata:any=["myname","mynum","gnme","gnum"];
+  mydata:any=["myname","mynum","gnme","gnum","uid"];
+  email: string="test@test.com";
+  password: string="test@123";
   constructor(
     public navCtrl: NavController,
     private callNumber: CallNumber,
@@ -27,15 +32,18 @@ export class AlertPage {
     private backgroundMode: BackgroundMode,
     private ln: LocalNotifications,
     private storage: Storage,
-    private sms: SMS
+    private sms: SMS,
+    private afauth: AngularFireAuth,
+    private afd: AngularFireDatabase
   ) {
-    this.init_data()
+    this.init_data();
     try{
       this.shake_init();
     }
     catch(exception){
       console.log(exception);
     }
+    this.init_firebase_retreave();
     this.backgroundMode.enable();
   }
 
@@ -59,6 +67,33 @@ export class AlertPage {
     });
     this.storage.get('setting_shake_sensitivity').then((val) => {
       this.sensitivity=val;
+    });
+    this.storage.get('setting_uid').then((val) => {
+      this.mydata[4]=val;
+    });
+    this.storage.get('email').then((val) => {
+      if(val)
+        this.email=val;
+    });
+    this.storage.get('password').then((val) => {
+      if(val)
+        this.password=val;
+    });
+  }
+
+  init_firebase_retreave(){
+    this.afauth.auth.signInWithEmailAndPassword(this.email, this.password)
+    .then((auth) => {
+      console.log("Sign in success");
+      this.afd.list('/userdata/'+this.mydata[4]+"/appdata/setting_backup/")
+      .subscribe(
+        (data) => {
+          console.log(data[0]);
+        }
+      )
+    })
+    .catch((err) => {
+      console.log(err);
     });
   }
 
