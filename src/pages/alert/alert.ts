@@ -10,6 +10,7 @@ import { SMS } from '@ionic-native/sms';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { AuthenticationProvider } from '../../providers/authentication/authentication';
 
 @Component({
   selector: 'page-alert',
@@ -38,8 +39,8 @@ em_classname_3:String="but1 ";
     private ln: LocalNotifications,
     private storage: Storage,
     private sms: SMS,
-    private afauth: AngularFireAuth,
-    private afd: AngularFireDatabase
+    private afd: AngularFireDatabase,
+    private auth: AuthenticationProvider
   ) {
     this.init_data();
     try{

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { Storage } from '@ionic/storage';
 import { LoginPage } from '../login/login';
+import { AuthenticationProvider } from '../../providers/authentication/authentication';
 
 @Component({
   selector: 'page-settings',
@@ -11,13 +11,24 @@ import { LoginPage } from '../login/login';
 })
 export class SettingsPage {
   sensitivity:number=0;
-  constructor(public navCtrl: NavController, public fAuth: AngularFireAuth, private storage: Storage) {
+  constructor(public navCtrl: NavController, private auth: AuthenticationProvider, private storage: Storage) {
     this.init_vars();
   }
 
   signout_all(k){
     if(k==0){
       // this.logoutUser();
+      this.auth.afauth.auth.signOut()
+      .then(
+        (val) => {
+          console.log("Singed out success");
+        }
+      )
+      .catch(
+        (err) => {
+          console.log(err);
+        }
+      )
       this.storage.clear();
       // this.pushPage=LoginPage;
       this.navCtrl.setRoot(LoginPage);

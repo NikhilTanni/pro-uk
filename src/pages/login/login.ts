@@ -3,10 +3,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ViewChild } from '@angular/core';
 import { Slides } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
-import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { Storage } from '@ionic/storage';
 import { NetworkInterface } from '@ionic-native/network-interface';
+import { AuthenticationProvider } from '../../providers/authentication/authentication';
 
  export class User {
      email: string="";
@@ -42,7 +42,7 @@ export class LoginPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public fAuth: AngularFireAuth,
+    private auth: AuthenticationProvider,
     private storage: Storage,
     public afd: AngularFireDatabase,
     private networkInterface: NetworkInterface
@@ -213,11 +213,11 @@ if(this.gender=='Female'){
 
   async login() {
     try {
-      var r = await this.fAuth.auth.signInWithEmailAndPassword(
+      var r = await this.auth.afauth.auth.signInWithEmailAndPassword(
         this.user.email,
         this.user.password
       );
-      this.fAuth.authState.subscribe(data=>{
+      this.auth.afauth.authState.subscribe(data=>{
         this.uid = data.uid;
         this.init_firebase_retreave(data.uid);
         this.storage.set("setting_user_id",data.uid);
@@ -254,7 +254,7 @@ if(this.gender=='Female'){
 
   async register() {
     try {
-      var r = await this.fAuth.auth.createUserWithEmailAndPassword(
+      var r = await this.auth.afauth.auth.createUserWithEmailAndPassword(
         this.user.email,
         this.user.password
       );
@@ -270,7 +270,7 @@ if(this.gender=='Female'){
   }
 
   login_post_reg(){
-    this.fAuth.authState.subscribe(data=>{
+    this.auth.afauth.authState.subscribe(data=>{
       this.uid = data.uid;
       this.storage.set("setting_user_id",data.uid);
       this.storage.set("login_user_is_login",1);

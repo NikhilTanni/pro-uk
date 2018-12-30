@@ -23,6 +23,7 @@ import { BackgroundMode } from '@ionic-native/background-mode';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth'
+import { AuthenticationProvider } from '../providers/authentication/authentication';
 
 var config = {
     apiKey: "AIzaSyASZwRs3Dp2OEHauxRVMEAbA24YV69NX8A",
@@ -68,7 +69,8 @@ var config = {
     SMS,
     LocalNotifications,
     BackgroundMode,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AuthenticationProvider
   ]
 })
 export class AppModule {}
