@@ -1,18 +1,66 @@
 <ion-header  >
   <ion-navbar color="primary" >
-    <ion-title   color="primary">
+    <ion-title  color="primary">
       PRO_UK
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content  class="bg" style="padding:0px;" >
+  <div class="app_help_info" *ngIf="help_info_app[0]">
+    <div id="help_slide1" *ngIf="help_info_app[1]==1">
+      <span style="display: block; position: absolute; bottom: 20%;left:20%; color:yellow;text-align: center">
+        click once to alert notifications only<br/>
+        click twice to alert all ways and start call<br/><br/>
+        <ion-badge (click)="next_app_info_help(1)" item-end>Next</ion-badge>
+      </span>
+    </div>
+
+    <div id="help_slide1" *ngIf="help_info_app[2]==1">
+      <span style="display: block; position: absolute; top: 40%;left:20%; color:yellow;text-align: center">
+        click twice to call AMBULANCE.<br/><br/>
+        <ion-badge item-end (click)="next_app_info_help(2)" style="background-color: blue">Next</ion-badge>
+      </span>
+    </div>
+
+    <div id="help_slide1" *ngIf="help_info_app[3]==1">
+      <span style="display: block; position: absolute; top: 40%;left:20%; color:yellow;text-align: center">
+        click twice to call FIRE station.<br/><br/>
+        <ion-badge item-end (click)="next_app_info_help(3)" style="background-color: blue">Next</ion-badge>
+      </span>
+    </div>
+
+    <div id="help_slide1" *ngIf="help_info_app[4]==1">
+      <span style="display: block; position: absolute; top: 40%;left:20%; color:yellow;text-align: center">
+        click twice to call POLICE station.<br/><br/>
+        <ion-badge item-end (click)="next_app_info_help(4)" style="background-color: blue">Next</ion-badge>
+      </span>
+    </div>
+
+    <div id="help_slide1" *ngIf="help_info_app[5]==1">
+      <div>
+        <div style="display:block; position: absolute; bottom: 4%; left: 20%;width:1%; border: 2px dotted yellow; height: 20%; background-color: transparent"></div>
+        <div style="display:block; position: absolute; bottom: 24%; left: 20%; background-color: transparent; color: yellow">
+          Your Emergency dashboard.
+        </div>
+
+        <div style="display:block; position: absolute; bottom: 4%; right: 20%;width:1%; border: 2px dotted yellow; height: 30%; background-color: transparent"></div>
+        <div style="display:block; position: absolute; bottom: 35%; right: 20%; background-color: transparent; color: yellow">
+          Your Profile.
+        </div>
+      </div>
+      <br/><br/>
+        <ion-badge item-end (click)="next_app_info_help(5)" style="display: block; position: absolute; top: 45%; left: 30%; background-color: blue">Ok, Got it!</ion-badge>
+
+    </div>
+
+  </div>
 <ion-grid id="mar">
     <ion-row>
         <ion-col col-1 id="mar">
         </ion-col>
 
-        <ion-col col-10 id="mar">
+        <ion-col col-10 id="mar" [class]="sos_classname">
             <ion-card id="alert_but">
                 <ion-card-content style="padding: 0%;">
                     <button ion-button clear large class="but" (click)="sos_press()">
@@ -34,19 +82,19 @@
          <ion-grid>
             <ion-row class="alternate">
                 <ion-col col-4>
-                    <button ion-button large class="but1" (click)="emergency_call(0)">
+                    <button ion-button large class="but1" [class]="em_classname_0" (click)="emergency_call(0)">
                         <img src="../../assets/imgs/attachments/amb_but.svg" class="size_but_alter"/>
                     </button>
                 </ion-col>
 
                 <ion-col col-4>
-                    <button ion-button large class="but1" (click)="emergency_call(1)">
+                    <button ion-button large class="but1" [class]="em_classname_1" (click)="emergency_call(1)">
                         <img src="../../assets/imgs/attachments/firetruck_but.svg" class="size_but_alter"/>
                     </button>
                 </ion-col>
 
                 <ion-col col-4 >
-                    <button ion-button large class="but1" (click)="emergency_call(2)">
+                    <button ion-button large class="but1" [class]="em_classname_2" (click)="emergency_call(2)">
                         <img src="../../assets/imgs/attachments/pol_but1.svg" class="size_but_alter"/>
                     </button>
                 </ion-col>
@@ -209,4 +257,7 @@
             </ion-slide>
         </ion-slides!-->
 <!/div>
+
+
+
 </ion-content>

@@ -17,7 +17,11 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 })
 export class AlertPage {
   @ViewChild(Content) content: Content;
-
+  sos_classname:String="";
+  em_classname_0:String="but1 ";
+  em_classname_1:String="but1 ";
+  em_classname_2:String="but1 ";
+em_classname_3:String="but1 ";
   lock_click:any=[0,0,0];
   sos_click:any=[0];
   emer_call:any=["9972284495","9035489865","9164175075"];
@@ -25,6 +29,7 @@ export class AlertPage {
   mydata:any=["myname","mynum","gnme","gnum","uid"];
   email: string="test@test.com";
   password: string="test@123";
+  help_info_app:any=[0,0,0,0,0,0];
   constructor(
     public navCtrl: NavController,
     private callNumber: CallNumber,
@@ -51,8 +56,45 @@ export class AlertPage {
     this.content.scrollToBottom();
   }
 
+  next_app_info_help(k){
+    if(k==1){
+      this.help_info_app=[1,0,1,0,0,0];
+      this.sos_classname="";
+      this.em_classname_0=this.em_classname_0+"em_class_0";
+    }
+    else if(k==2){
+      this.help_info_app=[1,0,0,1,0,0];
+      this.em_classname_0="but1 ";
+      this.em_classname_1=this.em_classname_1+"em_class_0";
+    }
+    else if(k==3){
+      this.help_info_app=[1,0,0,0,1,0];
+      this.em_classname_1="but1 ";
+      this.em_classname_2=this.em_classname_2+"em_class_0";
+    }
+    else if(k==4){
+      this.help_info_app=[1,0,0,0,0,1];
+      this.em_classname_2="but1 ";
+      //
+    }
+    else if(k==5){
+      this.help_info_app=[0,0,0,0,0,0];
+      this.em_classname_3="but1 ";
+      this.storage.set("app_help_info",1);
+    }
+  }
 
   init_data(){
+    this.storage.get('app_help_info').then((val) => {
+      if(val!=1){
+        this.help_info_app=[1,1,0,0,0,0];
+        this.sos_classname="sos_btn_app_info";
+      }
+      else{
+        //dont show help
+      }
+    });
+
     this.storage.get('setting_name').then((val) => {
       this.mydata[0]=val;
     });

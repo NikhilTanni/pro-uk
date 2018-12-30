@@ -1,5 +1,5 @@
 page-alert {
-    
+
     .bg
     {
        // background-image: linear-gradient(to bottom ,white,white,#D8D8D8,white)
@@ -17,7 +17,7 @@ page-alert {
     .scroll-content
     {
         margin-top:0%;
-        
+
     }
  #alert_but
     {
@@ -28,7 +28,6 @@ page-alert {
         text-align: center;
         background-color:	#FD5E49;
         box-shadow: 0 5px 15px -5px #00000070;
-        
      /*    border-left-style: groove;
         border-right-style: groove;
         border-left-color: azure;
@@ -51,11 +50,11 @@ page-alert {
         transition-timing-function: ease-in-out;
         display: block;
     }
- .but:active 
+ .but:active
     {
-        
+
         transform: scale3d(.9,.9,.8);
-        
+
         opacity: 0.9;
     }
  .but1
@@ -69,7 +68,7 @@ page-alert {
         overflow:hidden;
         position:relative;
     }
- #alert_but:before 
+ #alert_but:before
     {
         content:"";
         position:absolute;
@@ -78,11 +77,11 @@ page-alert {
         background:#FD5E49;
         transform:rotate(45deg);
         left:-110%;
-        top:90%; 
+        top:90%;
         opacity: .5;
         overflow: hidden;
     }
- .but1:active 
+ .but1:active
     {
         transform:scale(.95);
         color:#f1f1f1;
@@ -94,11 +93,11 @@ page-alert {
     {
         0%
         {left:-110%;
-        top:90%;     
+        top:90%;
         }
         50%
         {left:10%;
-         top:-30%;    
+         top:-30%;
         }
         100%
         {
@@ -115,7 +114,7 @@ page-alert {
  .alternate
     {
         text-align: center;
-    
+
     }
  .h5
     {
@@ -155,7 +154,7 @@ page-alert {
         padding: 0%;
         padding-top: 5%;
         border-radius: 15px;
-        box-shadow:20px;    
+        box-shadow:20px;
     }
  #head
     {
@@ -202,12 +201,12 @@ page-alert {
     }
 .fa
     {
-     //float: left; 
+     //float: left;
         //margin-right:2%;
         text-align: center;
 
     }
-    .fa-circle 
+    .fa-circle
     {
         color:#318F62;
     }
@@ -216,6 +215,28 @@ page-alert {
     {
         float:right;
     }
- 
+ .app_help_info{
+   display: block;
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   z-index: 10;
+   background-color: rgba(0,0,0,0.85);
+ }
+ #help_slide1{
+
+ }
+ .sos_btn_app_info{
+   z-index: 999;
+   border: 2px dotted white;
+   border-radius: 10%;
+ }
+
+ .em_class_0{
+   z-index: 9999;
+   border: 2px dotted red;
+   border-radius: 10%;
+ }
+
 
 }

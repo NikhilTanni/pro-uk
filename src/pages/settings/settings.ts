@@ -10,9 +10,9 @@ import { LoginPage } from '../login/login';
   templateUrl: 'settings.html'
 })
 export class SettingsPage {
-
+  sensitivity:number=0;
   constructor(public navCtrl: NavController, public fAuth: AngularFireAuth, private storage: Storage) {
-
+    this.init_vars();
   }
 
   signout_all(k){
@@ -22,6 +22,12 @@ export class SettingsPage {
       // this.pushPage=LoginPage;
       this.navCtrl.setRoot(LoginPage);
     }
+  }
+
+  init_vars(){
+    this.storage.get('setting_shake_sensitivity').then((val) => {
+      this.sensitivity=val;
+    });
   }
 
   // logoutUser(): Promise<void> {

@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ViewChild } from '@angular/core';
 import { Slides } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
-
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { Storage } from '@ionic/storage';
@@ -21,6 +20,7 @@ import { NetworkInterface } from '@ionic-native/network-interface';
   templateUrl: 'login.html',
 })
 export class LoginPage {
+  islogin:number=0;
   name="";
   age:number;
   mynumber:number;
@@ -47,7 +47,7 @@ export class LoginPage {
     public afd: AngularFireDatabase,
     private networkInterface: NetworkInterface
   ) {
-  this.pushPage = TabsPage;
+  //this.pushPage = TabsPage;
 
   }
     next() {
@@ -130,6 +130,25 @@ export class LoginPage {
     console.log(this.sensitivity);
   }
 
+  get_gender(g){
+    if(g==0){
+      if(this.gender=='Male'){
+        return 1;
+      }
+      else{
+        return 0;
+      }
+}
+else if(g==1){
+if(this.gender=='Female'){
+        return 1;
+      }
+      else{
+        return 0;
+      }
+}
+  }
+
   get_saved_input_details(){
 
     this.storage.get('setting_name').then((val) => {
@@ -210,18 +229,20 @@ export class LoginPage {
         this.storage.set("login_user_is_login",1);
         this.storage.set("setting_user_det_key",1);
         this.storeEmailAndPass();
-
+        this.islogin=1;
         this.next();
       }
 
     } catch (err) {
       if(err['code']=="auth/user-not-found"){
         this.register();
+        this.islogin=0;
         this.next();
       }
       else{
         console.error(err);
         this.error="Failed to Auth! check all credentials properly! if problem still persist, Please contact service center!";
+        // this.navCtrl.setRoot(LoginPage);
       }
     }
   }
@@ -296,38 +317,65 @@ export class LoginPage {
   }
 
   update_with_ip(ip_arr){
-    var reg_info={
-      'time' : new Date().toISOString(),
-      'ip' : ip_arr
-    }
-    this.afd.list('/userdata/'+this.uid+'/registerinfo/').push(reg_info);
-    var user_det={
-      'name' : 'xyzname',
-      'email' : this.user.email,
-      'gender' : this.gender,
-      'dob' : '40-13-3004'
-    }
-    console.log(user_det);
-    this.afd.list('/userdata/'+this.uid+'/userinfo/').push(user_det);
+    if(this.islogin==0){
+      var reg_info={
+        'time' : new Date().toISOString(),
+        'ip' : ip_arr
+      }
+      this.afd.list('/userdata/'+this.uid+'/registerinfo/').push(reg_info);
+      var user_det={
+        'name' : 'xyzname',
+        'email' : this.user.email,
+        'gender' : this.gender,
+        'dob' : '40-13-3004'
+      }
+      console.log(user_det);
+      this.afd.list('/userdata/'+this.uid+'/userinfo/').push(user_det);
 
-    var app_set={
-      'setting_name':this.name,
-      'setting_age':this.age,
-      'setting_mynumber':this.mynumber,
-      'setting_e1_name':this.e1_name,
-      'setting_e1_num':this.e1_num,
-      'setting_e2_name':"-not-updated-",
-      'setting_e2_num':"-not-updated-",
-      'setting_allergy':this.all_dia[0],
-      'setting_diagon':this.all_dia[1],
-      'setting_moredet':this.moredet,
-      'setting_user_det_key':"-not-updated-",
-      'setting_api_url':"https://amplivelist.herokuapp.com/temp/",
-      'setting_shake_sensitivity':this.sensitivity,
-      'setting_sms_s1_send':"true",
-      'setting_sms_s2_send':"true"
+      var app_set={
+        'setting_name':this.name,
+        'setting_age':this.age,
+        'setting_mynumber':this.mynumber,
+        'setting_e1_name':this.e1_name,
+        'setting_e1_num':this.e1_num,
+        'setting_e2_name':"-not-updated-",
+        'setting_e2_num':"-not-updated-",
+        'setting_allergy':this.all_dia[0],
+        'setting_diagon':this.all_dia[1],
+        'setting_moredet':this.moredet,
+        'setting_user_det_key':"-not-updated-",
+        'setting_api_url':"https://amplivelist.herokuapp.com/temp/",
+        'setting_shake_sensitivity':this.sensitivity,
+        'setting_sms_s1_send':"true",
+        'setting_sms_s2_send':"true"
+      }
+      this.afd.list('/userdata/'+this.uid+'/appdata/setting_backup/').push(app_set);
     }
-    this.afd.list('/userdata/'+this.uid+'/appdata/setting_backup/').push(app_set);
+    else{
+
+
+      var app_set={
+        'setting_name':this.name,
+        'setting_age':this.age,
+        'setting_mynumber':this.mynumber,
+        'setting_e1_name':this.e1_name,
+        'setting_e1_num':this.e1_num,
+        'setting_e2_name':"-not-updated-",
+        'setting_e2_num':"-not-updated-",
+        'setting_allergy':this.all_dia[0],
+        'setting_diagon':this.all_dia[1],
+        'setting_moredet':this.moredet,
+        'setting_user_det_key':"-not-updated-",
+        'setting_api_url':"https://amplivelist.herokuapp.com/temp/",
+        'setting_shake_sensitivity':this.sensitivity,
+        'setting_sms_s1_send':"true",
+        'setting_sms_s2_send':"true"
+      }
+      this.afd.list('/userdata/'+this.uid+'/appdata/setting_backup').subscribe((data)=>{
+        this.afd.list('/userdata/'+this.uid+'/registerinfo/').update(data[0].$key,app_set);
+      });
+    }
+
   }
 
 
