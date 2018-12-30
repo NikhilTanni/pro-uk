@@ -13,16 +13,20 @@
             </ion-icon>
         </ion-card-header>
         <ion-card-content>
+          <p style="color:red">{{warning}}</p><br/>
             <ion-item>
                 <ion-label >
                     Shake
                 </ion-label>
-                <ion-toggle>
-                </ion-toggle>
+                <!-- <ion-toggle (click)="change_value(1)" [(ngModel)]="shake_enable">
+                </ion-toggle> -->
+                <!-- some error in saving the on/off.... -->
+                <br/>
+
             </ion-item>
 
              <ion-item>
-                <ion-range min="-200" max="200" pin="false" [(ngModel)]="sensitivity" color="primary" style="padding-top: 2%">
+                <ion-range min="-200" max="200" pin="false" [(ngModel)]="sensitivity" (ionChange)="change_value(2)" color="primary" style="padding-top: 2%">
                     <ion-icon range-left small name="hand"></ion-icon>
                     <ion-icon range-right name="hand"></ion-icon>
                 </ion-range>
@@ -40,17 +44,17 @@
                 <ion-label >
                     Alarm Garduian 1
                 </ion-label>
-                <ion-toggle>
+                <ion-toggle [(ngModel)]="alarm_g1" (click)="change_value(3)">
                 </ion-toggle>
             </ion-item>
 
-             <ion-item>
+             <!-- <ion-item>
                 <ion-label >
                     Alarm Garduian 2
                 </ion-label>
-                <ion-toggle>
+                <ion-toggle [(ngModel)]="alarm_g2">
                 </ion-toggle>
-            </ion-item>
+            </ion-item> -->
         </ion-card-content>
     </ion-card>
 

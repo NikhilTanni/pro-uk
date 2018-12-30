@@ -23,11 +23,15 @@ export class MyApp {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      statusBar.styleDefault();
+      statusBar.hide();
       splashScreen.hide();
+
+
       this.check_login_init();
     });
   }
+
+
 
   check_login_init(){
     this.storage.get('login_user_is_login').then((val) => {

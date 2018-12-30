@@ -1,5 +1,17 @@
 page-alert {
 
+  .sos_btn_app_info{
+    z-index: 999;
+    border: 2px dotted white;
+    border-radius: 10%;
+  }
+
+  .em_class_0{
+    z-index: 9999;
+    border: 2px dotted red;
+    border-radius: 10%;
+  }
+
     .bg
     {
        // background-image: linear-gradient(to bottom ,white,white,#D8D8D8,white)
@@ -61,7 +73,7 @@ page-alert {
     {
         display:inline-block;
         background:#f1f1f1;
-        height: 120%;
+        height: 100%;
         border-radius: 30%;
         box-shadow: 0 5px 15px -5px #00000070;
        // color:#3498db;
@@ -226,17 +238,7 @@ page-alert {
  #help_slide1{
 
  }
- .sos_btn_app_info{
-   z-index: 999;
-   border: 2px dotted white;
-   border-radius: 10%;
- }
 
- .em_class_0{
-   z-index: 9999;
-   border: 2px dotted red;
-   border-radius: 10%;
- }
 
 
 }

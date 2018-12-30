@@ -112,10 +112,10 @@ export class LoginPage {
     }
     else if(m==3){
       if(v==1){
-        this.all_dia[0]="Diagnosis";
+        this.all_dia[1]="Diagnosis";
       }
       else{
-        this.all_dia[0]="No Diagnosis";
+        this.all_dia[1]="No Diagnosis";
       }
     }
     else if(m==4){
@@ -206,6 +206,8 @@ if(this.gender=='Female'){
       this.storage.set("setting_user_det_key",1);
       this.storage.set("setting_shake_sensitivity",20);
       this.storage.set("setting_sms_s1_send","true");
+      this.storage.set("setting_diagon",this.all_dia[0]);
+      this.storage.set("setting_allergy",this.all_dia[1]);
       this.storage.set("setting_user_det_key",1);
       this.storage.set("setting_setting_data_fetch",1);
     }

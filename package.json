@@ -21,6 +21,7 @@
     "@angular/http": "5.2.11",
     "@angular/platform-browser": "5.2.11",
     "@angular/platform-browser-dynamic": "5.2.11",
+    "@ionic-native/android-permissions": "^4.18.0",
     "@ionic-native/background-mode": "^4.18.0",
     "@ionic-native/call-number": "^4.18.0",
     "@ionic-native/core": "~4.17.0",
@@ -35,6 +36,7 @@
     "call-number": "^1.0.1",
     "cordova-android": "7.0.0",
     "cordova-browser": "~5.0.4",
+    "cordova-plugin-android-permissions": "^1.0.0",
     "cordova-plugin-background-mode": "^0.7.2",
     "cordova-plugin-badge": "^0.8.8",
     "cordova-plugin-device": "^2.0.2",
@@ -77,10 +79,11 @@
       "cordova-sqlite-storage": {},
       "cordova-plugin-networkinterface": {},
       "cordova-plugin-shake": {},
-      "cordova-sms-plugin": {},
       "cordova-plugin-local-notification": {},
       "cordova-plugin-background-mode": {},
-      "call-number": {}
+      "call-number": {},
+      "cordova-plugin-android-permissions": {},
+      "cordova-sms-plugin": {}
     },
     "platforms": [
       "android",

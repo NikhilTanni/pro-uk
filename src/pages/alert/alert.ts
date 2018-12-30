@@ -11,6 +11,9 @@ import { SMS } from '@ionic-native/sms';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
+import { AndroidPermissions } from '@ionic-native/android-permissions';
+
+
 
 @Component({
   selector: 'page-alert',
@@ -19,14 +22,15 @@ import { AuthenticationProvider } from '../../providers/authentication/authentic
 export class AlertPage {
   @ViewChild(Content) content: Content;
   sos_classname:String="";
-  em_classname_0:String="but1 ";
-  em_classname_1:String="but1 ";
-  em_classname_2:String="but1 ";
-em_classname_3:String="but1 ";
+  em_classname_0:String="but1";
+  em_classname_1:String="but1";
+  em_classname_2:String="but1";
+em_classname_3:String="but1";
   lock_click:any=[0,0,0];
   sos_click:any=[0];
   emer_call:any=["9972284495","9035489865","9164175075"];
   sensitivity:number=20;
+  shake_enable:number=1;
   mydata:any=["myname","mynum","gnme","gnum","uid"];
   email: string="test@test.com";
   password: string="test@123";
@@ -40,7 +44,8 @@ em_classname_3:String="but1 ";
     private storage: Storage,
     private sms: SMS,
     private afd: AngularFireDatabase,
-    private auth: AuthenticationProvider
+    private auth: AuthenticationProvider,
+    private androidPermissions: AndroidPermissions
   ) {
     this.init_data();
     try{
@@ -50,7 +55,13 @@ em_classname_3:String="but1 ";
       console.log(exception);
     }
     // this.init_firebase_retreave();
-    this.backgroundMode.enable();
+    try{
+      this.backgroundMode.enable();
+    }
+    catch(exception){
+      console.log("cordova not available - for background");
+    }
+
   }
 
   scrollToBottom(){
@@ -61,31 +72,40 @@ em_classname_3:String="but1 ";
     if(k==1){
       this.help_info_app=[1,0,1,0,0,0];
       this.sos_classname="";
-      this.em_classname_0=this.em_classname_0+"em_class_0";
+      this.em_classname_0=this.em_classname_0+" em_class_0";
     }
     else if(k==2){
       this.help_info_app=[1,0,0,1,0,0];
-      this.em_classname_0="but1 ";
-      this.em_classname_1=this.em_classname_1+"em_class_0";
+      this.em_classname_0="but1";
+      this.em_classname_1=this.em_classname_1+" em_class_0";
     }
     else if(k==3){
       this.help_info_app=[1,0,0,0,1,0];
-      this.em_classname_1="but1 ";
-      this.em_classname_2=this.em_classname_2+"em_class_0";
+      this.em_classname_1="but1";
+      this.em_classname_2=this.em_classname_2+" em_class_0";
     }
     else if(k==4){
       this.help_info_app=[1,0,0,0,0,1];
-      this.em_classname_2="but1 ";
+      this.em_classname_2="but1";
       //
     }
     else if(k==5){
       this.help_info_app=[0,0,0,0,0,0];
-      this.em_classname_3="but1 ";
+      this.em_classname_3="but1";
       this.storage.set("app_help_info",1);
     }
   }
 
   init_data(){
+
+    try{
+      this.get_permissions();
+    }
+    catch(exception){
+      console.log("error - for permission");
+    }
+
+
     this.storage.get('app_help_info').then((val) => {
       if(val!=1){
         this.help_info_app=[1,1,0,0,0,0];
@@ -110,6 +130,9 @@ em_classname_3:String="but1 ";
     });
     this.storage.get('setting_shake_sensitivity').then((val) => {
       this.sensitivity=val;
+    });
+    this.storage.get('setting_shake_enable').then((val) => {
+      this.shake_enable=val;
     });
     this.storage.get('setting_uid').then((val) => {
       this.mydata[4]=val;
@@ -148,6 +171,9 @@ em_classname_3:String="but1 ";
 
 
   shake_init(){
+    if(!this.shake_enable){
+      return;
+    }
     const watch = this.shake.startWatch(this.sensitivity).subscribe(() => {
       // do something
 
@@ -182,10 +208,24 @@ em_classname_3:String="but1 ";
   }
 
   callnumber(number){
-    this.callNumber.callNumber(number, true)
-    .then(res => console.log('Launched dialer! ->'+number, res))
-    .catch(err => console.log('Error launching dialer ->'+number, err));
+    try{
+      this.callNumber.callNumber(number, true)
+      .then(res => console.log('Launched dialer! ->'+number, res))
+      .catch(err => console.log('Error launching dialer ->'+number, err));
+    }
+    catch(exception){
+      console.log("cordova not available - for call");
+    }
   }
+
+  get_permissions(){
+
+
+      this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.CALL_PRIVILEGED).then(
+        result => console.log('Has permission?',result.hasPermission),
+        err => this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.CALL_PRIVILEGED)
+      );
+    }
 
 
 }
